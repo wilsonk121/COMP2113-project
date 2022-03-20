@@ -18,7 +18,7 @@ Rules:
  Features : 
 1. The first feature is Monster encountering. Players have to battle with the monster if they step into a particular grid. Those grids are randomly assigned.(Generation of random game sets or events)
 2. There will be various arrays used to store the game status. One of the significant statuses is the position of the player. We will use an int array to store it,  '1' represents the player, and '0' represents an empty grid. The status will be changed once the player moves.(Data structures for storing game status)
-3. Dynamic memory management.
+3. When memory is no longer required in the program, we will return it to the system . This can prevent the shortage of memory (Dynamic memory management)
 4. Though our game has a default map, players can change it by inputting a file (need to follow a certain format), then players can play on their customized map.(File input/output (e.g., for loading/saving game status))
 5. The program will be divided into several files to facilitate game development. For example, we will define a function map(), and it will be separated from the main function to increase readability and reusability.(Program codes in multiple files)
 
