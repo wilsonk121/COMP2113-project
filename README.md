@@ -1,7 +1,11 @@
 # COMP2113-project
+Group No.: 36
+
 Group members:
 Kwok Yuet Wai, Wilson 3035921899
 Shum Wing Yan, Selina 303580014
+
+Topic: Maze
 
 Description:
 “Find Your Way Out Mazes” is a single player maze game with one goal: to find a way to the exit point to escape from the Mysterious Maze. You can adjust the level of the challenge at the beginning of the game. Then, you will be placed at a random start point and you can start figuring your way to get out. There’ll be some dangerous places with some monster. If you unfortunately stepped on those places, you’ll have to battle with the monster to pass through it! Otherwise you’ll have to waste more time and face more monsters in find another way out. Let’s get started! Good luck with your adventure!
