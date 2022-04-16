@@ -7,23 +7,6 @@ using namespace std;
 #include <ctime>        
 
 
-void print_layout(int grid_size_row, int grid_size_col){
-    for(int i = 0; i < grid_size_row; i++){
-        for (int j = 0; j < grid_size_col; j++){
-            cout << "╔" << "═" << "╬" << "═" << "╗";
-        }
-        cout << endl;
-        for (int j = 0; j < grid_size_col; j++){
-            cout << "╬" << " " << " " << " " << "╬";
-        }
-        cout << endl;
-        for (int j = 0; j < grid_size_col; j++){
-            cout<<"╚"<<"═"<<"╬"<<"═"<<"╝";
-        }
-        cout << endl;
-    }
-}
-
 void random_start_and_finish_points(int &start_row, int &start_col, int &finish_row, int &finish_col, int grid_size_row, int grid_size_col){
     srand(time(NULL));	// initialize the seed for rand()
     start_row = rand() % grid_size_row;
@@ -71,15 +54,6 @@ int main(){
     cout << "Shortest steps from current point to exit point: " << distance_current_finish << endl;
     cout << "Total steps walked from the starting point: " << steps_walked << endl;
     
-    for (int i = 0; i < grid_size_row; i++){
-        for (int j = 0; j < grid_size_col; j++){
-            if (grid[grid_size_row][grid_size_col]=='C')
-                cout << "X" << " ";
-            else 
-                cout << "H  ";
-            if (j = grid_size_col - 1)
-                cout << endl;
-        }
     }
     
     return 0;
