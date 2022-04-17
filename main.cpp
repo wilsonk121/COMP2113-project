@@ -5,6 +5,29 @@
 #include <ctime>   
 using namespace std;
 
+void display(int grid_size_row,int grid_size_col,int current_row,int current_col){
+    for(int i=0;i<grid_size_row;i++){
+        for(int j=0;j<grid_size_col;j++){
+            cout<<"╔"<<"═"<<"╬"<<"═"<<"╗";
+        }
+        cout<<endl;
+        for(int j=0;j<grid_size_col;j++){
+			if(i==current_row&&j==current_col){
+				cout<<"╬"<<" "  <<"x"<<" "<<"╬";
+			}
+			else{
+				cout<<"╬"<<" "  <<" "<<" "<<"╬";
+			}
+        }
+        cout<<endl;
+        for(int j=0;j<grid_size_col;j++){
+            cout<<"╚"<<"═"<<"╬"<<"═"<<"╝";
+        }
+        cout<<endl;
+
+    }
+}
+
 //take in user input of grid size and generate a respective random map
 void generate_map(char ** grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
     cout << "Input map size row: ";
@@ -112,6 +135,7 @@ int main(){
     int number_of_step;
     
     while (current_row != finish_row || current_col != finish_col) {
+        display(grid_size_row,grid_size_col,current_row,current_col);
         move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col);
     }
     
