@@ -45,15 +45,16 @@ void generate_map(char ** grid, int &grid_size_row, int &grid_size_col, int & cu
 
 void random_start_and_finish_points(int &start_row, int &start_col, int &finish_row, int &finish_col, int grid_size_row, int grid_size_col){
     srand(time(NULL));	// initialize the seed for rand()
-    start_row = rand() % grid_size_row + 1;
-    start_col = rand() % grid_size_col + 1;
-    finish_row = rand() % grid_size_row + 1;
-    finish_col = rand() % grid_size_col + 1;
+    start_row = rand() % (grid_size_row+1);
+    start_col = rand() % (grid_size_col+1);
+    finish_row = rand() % (grid_size_row+1);
+    finish_col = rand() % (grid_size_col+1);
+
     
     //seems does not work
-    while (start_row == finish_col && start_col == finish_col){
-        finish_row = rand() % grid_size_row + 1;
-        finish_col = rand() % grid_size_col + 1;
+    while (start_row == finish_row && start_col == finish_col){
+        finish_row = rand() % (grid_size_row+1);
+        finish_col = rand() % (grid_size_col+1);
     }
     cout << "Starting position: Row " << start_row << " Column " << start_col << endl;
     cout << "Finishing position: Row " << finish_row  << " Column " << finish_col << endl;
