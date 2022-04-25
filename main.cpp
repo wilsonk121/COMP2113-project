@@ -51,7 +51,7 @@ void random_start_and_finish_points(int &start_row, int &start_col, int &finish_
     finish_col = rand() % (grid_size_col+1);
 
     
-    //seems does not work
+
     while (start_row == finish_row && start_col == finish_col){
         finish_row = rand() % (grid_size_row+1);
         finish_col = rand() % (grid_size_col+1);
