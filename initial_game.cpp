@@ -3,7 +3,6 @@
 #include <string>
 #include <cstdlib>  
 #include <ctime>
-#include "main.h"
 
 using namespace std;
 
