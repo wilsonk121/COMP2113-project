@@ -165,6 +165,7 @@ int main(){
     
     char ** grid;
     
+    cout << "Welcome you to the Mysterious Maze!" << endl;
     //to generate map with input size
     generate_map(grid, grid_size_row, grid_size_col, current_row, current_col);
     
@@ -191,7 +192,7 @@ int main(){
     }
 	
     //to indicate the finish of the game
-    cout << "Congratulation! You've successful escaped from the maze!" << endl;
+    cout << "Congratulation! You've successfully escaped from the Mysterious Maze!!!" << endl;
 
     //to provide game record
     cout << "\nGame statistics: " << endl;
