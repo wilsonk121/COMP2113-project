@@ -3,6 +3,8 @@
 #include <string>
 #include <cstdlib>      
 #include <ctime>   
+#include "other.h"
+
 using namespace std;
 
 void display(int grid_size_row,int grid_size_col,int current_row,int current_col,char direction){
