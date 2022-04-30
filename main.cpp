@@ -75,7 +75,7 @@ void display(int grid_size_row,int grid_size_col,int current_row,int current_col
 }
 
 //take in user input of grid size and generate a respective random map
-void generate_map(char ** grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
+void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
     cout << "Input map size row: ";
     cin >> grid_size_row;
     cout << "Input map column: ";
@@ -106,7 +106,7 @@ void random_start_and_finish_points(int &start_row, int &start_col, int &finish_
     cout << "Finishing position: Row " << finish_row  << " Column " << finish_col << endl;
 }
 
-void move_action(char **grid, int &steps_walked, int &current_row, int &current_col, int grid_size_row, int grid_size_col){
+void move_action(char ** &grid, int &steps_walked, int &current_row, int &current_col, int grid_size_row, int grid_size_col){
     
     cout << "Current position: Row " << current_row << " Column " << current_col << endl;
     
