@@ -22,7 +22,7 @@ Game Instructions ("Quick Start"):
 4. Enter the number of steps you wanted to take in the inputed direction
 5.	Your new current direction along with you walking path is shown
 6.	If you land on a dangerous place, you will have to win a mini-game in order to pass through it. Follow the instruction on the screen. You'll go one step backward if you fail to win.
-7.	Try to get to the destination! (You will see “Congratulations! You have escaped from the Mysterious Maze!!!”)
+7.	Try to get to the destination! (You will see “Congratulations! You have successfully escaped from the Mysterious Maze!!!”)
 
 
 
