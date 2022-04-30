@@ -10,9 +10,9 @@ using namespace std;
 //to take in user input of grid size (row and column) and generate a respective map in a 2D dynamic array
 void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
     
-    cout << "Input map size row: ";
+    cout << "Please enter the size of the map row (minimum: 3)that you want to challenge: ";
     cin >> grid_size_row;
-    cout << "Input map column: ";
+    cout << "Please enter the size of the map column (minimum: 3) that you want to challenge: ";
     cin >> grid_size_col;
 	
     grid  = new char *[grid_size_row + 1];
