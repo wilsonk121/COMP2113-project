@@ -74,13 +74,14 @@ void display(int grid_size_row,int grid_size_col,int current_row,int current_col
     }
 }
 
-//to take in user input of grid size (row and column) and generate a respective map
+//to take in user input of grid size (row and column) and generate a respective map in a 2D dynamic array
 void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
+    
     cout << "Input map size row: ";
     cin >> grid_size_row;
     cout << "Input map column: ";
     cin >> grid_size_col;
-
+	
     grid  = new char *[grid_size_row + 1];
     for (int i = 1; i <= grid_size_row ; i++){
        grid[i] = new char[grid_size_col + 1];
@@ -91,11 +92,13 @@ void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & c
 //to generate the random starting point and finishing point
 void random_start_and_finish_points(int &start_row, int &start_col, int &finish_row, int &finish_col, int grid_size_row, int grid_size_col){
     srand(time(NULL));	// initialize the seed for rand()
+	
     start_row = rand() % (grid_size_row+1);
     start_col = rand() % (grid_size_col+1);
     finish_row = rand() % (grid_size_row+1);
     finish_col = rand() % (grid_size_col+1);
 	
+    //to generate a new random finish point if the generated starting point is same as the finishing point	
     while (start_row == finish_row && start_col == finish_col){
         finish_row = rand() % (grid_size_row+1);
         finish_col = rand() % (grid_size_col+1);
@@ -140,7 +143,8 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
     }
     else 
         cout << "Walking outside of the map boundary. please input again" << endl;
-   
+	
+    //to update the total steps walked and the current position
     if (current_row != next_row || current_col != next_col){
         steps_walked += number_of_step;
         current_row = next_row;
