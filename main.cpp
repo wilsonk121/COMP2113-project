@@ -117,7 +117,7 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
     int number_of_step;
     
     cout << "\nWhich direction you want to walk towards?" << endl;
-    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwarda, 'R' for rightwards ";
+    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwarda, 'R' for rightwards" << endl;
     cin >> direction;
     cout << "How many steps do you want to take? ";
     cin >> number_of_step;
