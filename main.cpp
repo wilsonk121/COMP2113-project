@@ -23,12 +23,6 @@ void output_record(char ** grid){
 }
 
 void display(char ** grid,int grid_size_row,int grid_size_col,int current_row,int current_col){    
-        char direction;
-        direction=grid[current_row][current_col];
-        grid_size_row=5;
-        grid_size_col=5;
-        current_row=1;
-        current_col=2;
         for(int i=1;i<=grid_size_row;i++){
             for(int j=1;j<=grid_size_col;j++){
                 cout<<"╔"<<"═"<<"╬"<<"═"<<"╗";
