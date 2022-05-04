@@ -8,16 +8,53 @@
 
 using namespace std;
 
-void input_record(char ** grid){}
+void input_record(char ** &grid){
+    string name;
+    ifstream fin;
+    string line;
+    int xsize,ysize,xfin,yfin;
+    char c;
+    int x,y;
+    cout<<"input the file name:";
+    cin>>name;
+    fin.open(name);
+    if(fin.fail()){
+        cout<<"Error in file opening"<<endl;
+        exit(1);
+    }
+    fin>>xsize>>ysize>>xfin>>yfin;
+    while(fin>>c>>x>>y){
+        grid[x][y]=c;
+    }
 
-void output_record(char ** grid){
+}
+
+void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col){
+    string name;
     ofstream fout;
-    fout.open("saving.txt");
+    cout<<"input the file name:";
+    cin>>name;
+    fout.open(name);
     if(fout.fail()){
         cout<<"Error in file opening"<<endl;
         exit(1);
     }
-    fout<<""<<endl;
+    fout<<grid_size_row<<endl;
+    fout<<grid_size_col<<endl;
+    fout<<finish_row<<endl;
+    fout<<finish_col<<endl;
+
+    for(int i=1;i<=grid_size_row;i++){
+        for(int j=1;j<=grid_size_col;j++){
+            if(grid[i][j]=='C'||grid[i][j]=='U'||grid[i][j]=='D'||grid[i][j]=='L'||grid[i][j]=='R'){
+                fout<<grid[i][j]<<endl;
+                fout<<i<<endl;
+                fout<<j<<endl;
+
+            }
+        }
+    }
+
     fout.close();
 
 }
