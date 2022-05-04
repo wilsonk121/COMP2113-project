@@ -2,79 +2,68 @@
 #include <iomanip>
 #include <string>
 #include <cstdlib>      
-#include <ctime>   
+#include <ctime>  
+#include <fstream>
 #include "other.h"
 
 using namespace std;
 
-void display(int grid_size_row,int grid_size_col,int current_row,int current_col,char direction){
-    int dirX , dirY;
-    switch (direction)
-    {
-    case 'L':
-    dirX=current_row;
-    dirY=current_col-1;
-        break;
+void input_record(char ** grid){}
 
-    case 'R':
-    dirX=current_row;
-    dirY=current_col+1;
-        break;
-
-    case 'U':
-    dirX=current_row-1;
-    dirY=current_col;
-        break;
-
-    case 'D':
-    dirX=current_row+1;
-    dirY=current_col;
-        break;
+void output_record(char ** grid){
+    ofstream fout;
+    fout.open("saving.txt");
+    if(fout.fail()){
+        cout<<"Error in file opening"<<endl;
+        exit(1);
     }
-    
-    for(int i=1;i<=grid_size_row;i++){
-        for(int j=1;j<=grid_size_col;j++){
-            cout<<"╔"<<"═"<<"╬"<<"═"<<"╗";
-        }
-        cout<<endl;
-        for(int j=1;j<=grid_size_col;j++){
-			if(i==current_row&&j==current_col){
-				cout<<"╬"<<" " <<"x"<<" "<<"╬";
-			}
-			else{
-                if(i==dirX&&j==dirY){
-                    switch(direction){
-                        case 'L':
-                        cout<<"╬"<<"<" <<"-"<<"-"<<"╬";
-                        break;
-                        case 'R':
-                        cout<<"╬"<<"-" <<"-"<<">"<<"╬";
-                        break;
-                        case 'U':
-                        cout<<"╬"<<" " <<"↑"<<" "<<"╬";
-                        break;
-                        case 'D':
-                        cout<<"╬"<<" " <<"↓"<<" "<<"╬";
-                        break;
-                    }
-                }
-                else{
-                    cout<<"╬"<<" " <<" "<<" "<<"╬";
-                }
-			}
+    fout<<""<<endl;
+    fout.close();
 
-
-
-
-        }
-        cout<<endl;
-        for(int j=1;j<=grid_size_col;j++){
-            cout<<"╚"<<"═"<<"╬"<<"═"<<"╝";
-        }
-        cout<<endl;
-
-    }
 }
+
+void display(char ** grid,int grid_size_row,int grid_size_col,int current_row,int current_col){    
+        char direction;
+        direction=grid[current_row][current_col];
+        grid_size_row=5;
+        grid_size_col=5;
+        current_row=1;
+        current_col=2;
+        for(int i=1;i<=grid_size_row;i++){
+            for(int j=1;j<=grid_size_col;j++){
+                cout<<"╔"<<"═"<<"╬"<<"═"<<"╗";
+            }
+            cout<<endl;
+            for(int j=1;j<=grid_size_col;j++){
+                    switch(grid[i][j]){
+                            case 'L':
+                            cout<<"╬"<<" ◄ "<<"╬";
+                            break;
+                            case 'R':
+                            cout<<"╬"<<" ► "<<"╬";
+                            break;
+                            case 'U':
+                            cout<<"╬"<<" ▲ "<<"╬";
+                            break;
+                            case 'D':
+                            cout<<"╬"<<" ▼ "<<"╬";
+                            break;
+                            case 'C':
+                            cout<<"╬"<<" x "<<"╬";
+                            default:
+                            cout<<"╬"<<"   "<<"╬";
+                }
+            }
+
+            
+            cout<<endl;
+            for(int j=1;j<=grid_size_col;j++){
+                cout<<"╚"<<"═"<<"╬"<<"═"<<"╝";
+            }
+            cout<<endl;
+        }
+}
+
 
 //to take in user input of grid size (row and column) and generate a respective map in a 2D dynamic array
 void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
@@ -222,7 +211,7 @@ int main(){
     
     //to ask the play to move his/her direction until reaching the finishing point
     while (current_row != finish_row || current_col != finish_col) {
-        display(grid_size_row,grid_size_col,current_row,current_col,direction);
+        display(grid, grid_size_row, grid_size_col, current_row, current_col);
         move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col);
     }
 	
