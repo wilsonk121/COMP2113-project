@@ -6,13 +6,28 @@
 #include <fstream>
 #include "other.h"
 
-using namespace std;
 
-void input_record(char ** &grid){
+using namespace std;
+char ** grid;
+int grid_size_row, grid_size_col, current_row, current_col;
+int start_row, start_col, finish_row, finish_col;
+bool savegame=0;;
+
+void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
+    
+	
+    grid  = new char *[grid_size_row + 1];
+    for (int i = 1; i <= grid_size_row ; i++){
+       grid[i] = new char[grid_size_col + 1];
+    }
+    
+}
+
+void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr){
     string name;
     ifstream fin;
     string line;
-    int xsize,ysize,xfin,yfin;
+
     char c;
     int x,y;
     cout<<"input the file name:";
@@ -22,9 +37,11 @@ void input_record(char ** &grid){
         cout<<"Error in file opening"<<endl;
         exit(1);
     }
-    fin>>xsize>>ysize>>xfin>>yfin;
+    fin>>grid_size_row>>grid_size_col>>xfin>>yfin>>xcurr>>ycurr;
+
+    load_map(grid, grid_size_row, grid_size_col, xcurr, ycurr);
     while(fin>>c>>x>>y){
-        grid[x][y]=c;
+    grid[x][y]=c;
     }
 
 }
@@ -46,50 +63,65 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
 
     for(int i=1;i<=grid_size_row;i++){
         for(int j=1;j<=grid_size_col;j++){
-            if(grid[i][j]=='C'||grid[i][j]=='U'||grid[i][j]=='D'||grid[i][j]=='L'||grid[i][j]=='R'){
-                fout<<grid[i][j]<<endl;
+            if(grid[i][j]=='C'){
                 fout<<i<<endl;
                 fout<<j<<endl;
 
             }
         }
     }
+    for(int i=1;i<=grid_size_row;i++){
+        for(int j=1;j<=grid_size_col;j++){
+            if(grid[i][j]=='U'||grid[i][j]=='D'||grid[i][j]=='L'||grid[i][j]=='R'||grid[i][j]=='C'){
+                fout<<grid[i][j]<<endl;
+                fout<<i<<endl;
+                fout<<j<<endl;
+            }
+
+        }
+    }
 
     fout.close();
+    cout<<"game saved in "<<name<<endl;
+    savegame=1;
+
+
 
 }
 
-void display(char ** grid,int grid_size_row,int grid_size_col,int current_row,int current_col){    
+void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col){    
         for(int i=1;i<=grid_size_row;i++){
             for(int j=1;j<=grid_size_col;j++){
-                cout<<"╔"<<"═"<<"╬"<<"═"<<"╗";
+                cout<<"-"<<"-"<<"-"<<"-"<<"-";
             }
             cout<<endl;
             for(int j=1;j<=grid_size_col;j++){
                     switch(grid[i][j]){
                             case 'L':
-                            cout<<"╬"<<" ◄ "<<"╬";
+                            cout<<"|"<<" < "<<"|";
                             break;
                             case 'R':
-                            cout<<"╬"<<" ► "<<"╬";
+                            cout<<"|"<<" > "<<"|";
                             break;
                             case 'U':
-                            cout<<"╬"<<" ▲ "<<"╬";
+                            cout<<"|"<<" ^ "<<"|";
                             break;
                             case 'D':
-                            cout<<"╬"<<" ▼ "<<"╬";
+                            cout<<"|"<<" ! "<<"|";
                             break;
                             case 'C':
-                            cout<<"╬"<<" x "<<"╬";
+                            cout<<"|"<<" x "<<"|";
+                            break;
                             default:
-                            cout<<"╬"<<"   "<<"╬";
+                            cout<<"|"<<"   "<<"|";
+                            break;
                 }
             }
 
             
             cout<<endl;
             for(int j=1;j<=grid_size_col;j++){
-                cout<<"╚"<<"═"<<"╬"<<"═"<<"╝";
+                cout<<"-"<<"-"<<"-"<<"-"<<"-";
             }
             cout<<endl;
         }
@@ -192,13 +224,16 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
     //to get valid players' input of direction and number of step
     do {
     cout << "\nWhich direction you want to walk towards?" << endl;
-    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwarda, 'R' for rightwards"<< endl;
+    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwarda, 'R' for rightwards, 'S' for saving game"<< endl;
     cin >> direction;
+    if(direction=='S'){
+        break;
+    }
     cout << "How many steps do you want to take? ";
     cin >> number_of_step;
     }
     while (move_action_valid(direction,number_of_step, current_row, current_col, grid_size_row, grid_size_col) == false);
-    
+    if(direction!='S'){
     //to update the walking path
     int next_row = current_row, next_col = current_col;
     move_action_path(grid, direction, number_of_step, next_row, next_col, current_row, current_col);
@@ -208,44 +243,60 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
         steps_walked += number_of_step;
         current_row = next_row;
         current_col = next_col;
-        grid[current_row][current_col] = 'C';
+        grid[current_row][current_col] = 'C';}
+
     }
+    else{
+        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col);
+    }
+
+
         
 }
 
 int main(){
     
-    int grid_size_row, grid_size_col, current_row, current_col;
-    int start_row, start_col, finish_row, finish_col;
-    
-    char ** grid;
-    
+    char *temp=new char;
     cout << "Welcome you to the Mysterious Maze!" << endl;
-    //to generate map with input size
-    generate_map(grid, grid_size_row, grid_size_col, current_row, current_col);
+    cout << "Do you want to start a new game or load from a saved game(S/L): " << endl;
+    cin>>*temp;
+    if(*temp=='S'){
+        //to generate map with input size
+        generate_map(grid, grid_size_row, grid_size_col, current_row, current_col);
     
-    //to generate starting and finishing positions randomly
-    random_start_and_finish_points(start_row, start_col, finish_row, finish_col, grid_size_row, grid_size_col);
-    //to update the starting point as the current position	
-    current_row = start_row;
-    current_col = start_col;
-    grid[current_row][current_col] = 'C';
+        //to generate starting and finishing positions randomly
+        random_start_and_finish_points(start_row, start_col, finish_row, finish_col, grid_size_row, grid_size_col);
+        //to update the starting point as the current position	
+        current_row = start_row;
+        current_col = start_col;
+        grid[current_row][current_col] = 'C';
+    }
+    else{
+        if(*temp=='L'){
+            input_record(grid,finish_row,finish_col,current_row,current_col);
+        }
+    }
+    delete temp;
+
 
     //to provide game statistics and hint  
-    int distance_start_finish = abs(start_row - finish_row) + abs(start_col - finish_col);
-    int distance_current_finish = abs(current_row - finish_row) + abs(current_col - finish_col);
+    int distance_start_finish;
+    int distance_current_finish;
     int steps_walked = 0;
     
-    cout << "Shortest steps from starting point to exit point: " << distance_start_finish << endl;
-    cout << "Shortest steps from current point to exit point: " << distance_current_finish << endl;
-    cout << "Total steps walked from the starting point: " << steps_walked << endl;
     
     //to ask the play to move his/her direction until reaching the finishing point
-    while (current_row != finish_row || current_col != finish_col) {
+    while ((current_row != finish_row || current_col != finish_col)&&(savegame==0)) {
+        distance_start_finish = abs(start_row - finish_row) + abs(start_col - finish_col);
+        distance_current_finish = abs(current_row - finish_row) + abs(current_col - finish_col);
+        cout << "Shortest steps from starting point to exit point: " << distance_start_finish << endl;
+        cout << "Shortest steps from current point to exit point: " << distance_current_finish << endl;
+        cout << "Total steps walked from the starting point: " << steps_walked << endl;
         display(grid, grid_size_row, grid_size_col, current_row, current_col);
         move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col);
     }
 	
+    if(savegame==0){
     //to indicate the finish of the game
     cout << "Congratulation! You've successfully escaped from the Mysterious Maze!!!" << endl;
 
@@ -253,6 +304,8 @@ int main(){
     cout << "\nGame statistics: " << endl;
     cout << "Shortest steps from starting point to exit point: " << distance_start_finish << endl;
     cout << "Total steps walked: " << steps_walked << endl;
+    }
+
     
     delete[] grid;
     
