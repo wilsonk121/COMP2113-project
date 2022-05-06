@@ -6,8 +6,8 @@
 #include <fstream>
 #include "other.h"
 
-
 using namespace std;
+
 char ** grid;
 int grid_size_row, grid_size_col, current_row, current_col;
 int start_row, start_col, finish_row, finish_col;
@@ -66,7 +66,7 @@ int main(){
     cout << "Welcome you to the Mysterious Maze!" << endl;
     cout << "Do you want to start a new game (S) or load from a saved game (L): ";
     cin >> *temp;
-    if (*temp=='S'){
+    if (*temp =='S'){
         //to generate map with input size
         generate_map(grid, grid_size_row, grid_size_col, current_row, current_col);
         //to generate starting and finishing positions randomly
@@ -96,7 +96,6 @@ int main(){
     cout << "Total steps walked: " << steps_walked << endl;
     }
 
-    
     delete[] grid;
     
     return 0;
