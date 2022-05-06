@@ -264,7 +264,7 @@ int main(){
     char *temp=new char;
     cout << "Welcome you to the Mysterious Maze!" << endl;
     cout << "Do you want to start a new game or load from a saved game(S/L): " << endl;
-    cin>>*temp;
+    cin >> *temp;
     if (*temp=='S'){
         //to generate map with input size
         generate_map(grid, grid_size_row, grid_size_col, current_row, current_col);
@@ -278,14 +278,8 @@ int main(){
     else if (*temp=='L')
             input_record(grid, finish_row, finish_col, current_row, current_col);
     delete temp;
-
-    //to provide game statistics and hint  
-    int distance_start_finish;
-    int distance_current_finish;
-    int steps_walked = 0;
     
-    
-    //to ask the play to move his/her direction until reaching the finishing point
+    //to ask the play to move his/her direction until reaching the finishing point or to save the game progress
     while ((current_row != finish_row || current_col != finish_col) && (savegame == 0)){
         display(grid, grid_size_row, grid_size_col, current_row, current_col, finish_row, finish_col, distance_start_finish, steps_walked);
         move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col);
