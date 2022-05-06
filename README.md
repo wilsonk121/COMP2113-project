@@ -32,7 +32,7 @@ Features :
 4. User can save game and load game. System will output a file of game status and you can load it by input the file name(e.g. for loading/saving game status))
 5. The program will be divided into several files to facilitate game development. such as initialization.cpp ,display.cpp and move.cpp , and it will be separated from the main function to increase readability and reusability.(Program codes in multiple files)
 6. The program use indentation properly especially in multidimensional arrays. we use readable name to be assigned to variable(Proper indentation and naming styles)
-7. (In-code documentation)
+7. Comments are written to explain how the function work and some hard-to-read part(In-code documentation)
 
 
 
