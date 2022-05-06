@@ -139,7 +139,7 @@ void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & c
     cout << "Input map size row: ";
     cin >> grid_size_row;
     while (grid_size_row < 2) {
-        cout << "Please input a number greater than 1" << endl;
+        cout << "Please input an integer greater than 1" << endl;
         cout << "Input map size row: ";
         cin >> grid_size_row;
     }
@@ -147,7 +147,7 @@ void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & c
     cout << "Input map column: ";
     cin >> grid_size_col;
     while (grid_size_row < 2) {
-        cout << "Please input a number greater than 1" << endl;
+        cout << "Please input an integer greater than 1" << endl;
         cout << "Input map size column: ";
         cin >> grid_size_row;
     }
