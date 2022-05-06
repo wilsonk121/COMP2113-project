@@ -26,7 +26,7 @@ Compilation and Execution Instructions:
 3. Input "./main"
 
 Features : 
-1. The first feature is Monster encountering. Players have to battle with the monster if they step into a particular grid. Those grids are randomly assigned.(Generation of random game sets or events)
+1. Player will be spawned in random position, also the exit location will be ramdomly assigned. (Generation of random game sets or events)
 2. There will be various arrays used to store the game status. One of the significant statuses is the position of the player. We will use an int array to store it,  '1' represents the player, and '0' represents an empty grid. The status will be changed once the player moves.(Data structures for storing game status)
 3. When memory is no longer required in the program, we will return it to the system . This can prevent the shortage of memory (Dynamic memory management)
 4. User can save game and load game. System will output a file of game status and you can load it by input the file name(e.g. for loading/saving game status))
