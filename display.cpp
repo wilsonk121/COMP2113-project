@@ -4,38 +4,37 @@
 #include "other.h"
 
 using namespace std;
-//to display the essential information for the game such as map, user location, distance from the end point, it take the current position, map size, etc as input and output a graphic of map
+//to display the essential information for the game such as map, user location, distance from the end point
 void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, int distance_start_finish, int steps_walked){   
 	cout << endl;
-        int distance_current_finish ;
+    int distance_current_finish ;
 	for(int i = 1; i <= grid_size_row; i++){
             for(int j = 1;j <= grid_size_col; j++){
                 cout << "-" << "-" << "-" << "-" << "-";
             }
             cout << endl;
             for(int j = 1; j <= grid_size_col; j++){
-                    switch(grid[i][j]){
-                            case 'L':
-                            cout << "|" << " < " << "|";
-                            break;
-                            case 'R':
-                            cout << "|" << " > " << "|";
-                            break;
-                            case 'U':
-                            cout << "|" << " ^ " << "|";
-                            break;
-                            case 'D':
-                            cout << "|" << " ! " << "|";
-                            break;
-                            case 'C':
-                            cout << "|" << " x " << "|";
-                            break;
-                            default:
-                            cout << "|" << "   " << "|";
-                            break;
+                switch(grid[i][j]){
+                    case 'L':
+                    cout << "|" << " < " << "|";
+                    break;
+                    case 'R':
+                    cout << "|" << " > " << "|";
+                    break;
+                    case 'U':
+                    cout << "|" << " ^ " << "|";
+                    break;
+                    case 'D':
+                    cout << "|" << " ! " << "|";
+                    break;
+                    case 'C':
+                    cout << "|" << " x " << "|";
+                    break;
+                    default:
+                    cout << "|" << "   " << "|";
+                    break;
                 }
             }
-
             
             cout<<endl;
             for(int j = 1; j <= grid_size_col; j++){
