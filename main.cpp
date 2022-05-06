@@ -14,78 +14,6 @@ int start_row, start_col, finish_row, finish_col;
 int distance_start_finish, distance_current_finish, steps_walked = 0;
 bool savegame = 0;
 
-void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){	
-    grid  = new char *[grid_size_row + 1];
-    for (int i = 1; i <= grid_size_row ; i++){
-       grid[i] = new char[grid_size_col + 1];
-    } 
-}
-
-void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr){
-    string name;
-    ifstream fin;
-    string line;
-
-    char c;
-    int x,y;
-    cout<<"Input the file name: ";
-    cin>>name;
-    fin.open(name);
-    if(fin.fail()){
-        cout<<"Error in file opening"<<endl;
-        exit(1);
-    }
-    fin>>grid_size_row>>grid_size_col>>xfin>>yfin>>xcurr>>ycurr;
-
-    load_map(grid, grid_size_row, grid_size_col, xcurr, ycurr);
-    while(fin>>c>>x>>y){
-    grid[x][y]=c;
-    }
-
-}
-
-void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col){
-    string name;
-    ofstream fout;
-    cout<<"Input the file name: ";
-    cin>>name;
-    fout.open(name);
-    if(fout.fail()){
-        cout<<"Error in file opening"<<endl;
-        exit(1);
-    }
-    fout<<grid_size_row<<endl;
-    fout<<grid_size_col<<endl;
-    fout<<finish_row<<endl;
-    fout<<finish_col<<endl;
-
-    for(int i=1;i<=grid_size_row;i++){
-        for(int j=1;j<=grid_size_col;j++){
-            if(grid[i][j]=='C'){
-                fout<<i<<endl;
-                fout<<j<<endl;
-
-            }
-        }
-    }
-    for(int i=1;i<=grid_size_row;i++){
-        for(int j=1;j<=grid_size_col;j++){
-            if(grid[i][j]=='U'||grid[i][j]=='D'||grid[i][j]=='L'||grid[i][j]=='R'||grid[i][j]=='C'){
-                fout<<grid[i][j]<<endl;
-                fout<<i<<endl;
-                fout<<j<<endl;
-            }
-
-        }
-    }
-
-    fout.close();
-    cout<<"game saved in "<<name<<endl;
-    savegame=1;
-
-
-
-}
 
 void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, 
 	     int distance_start_finish, int steps_walked){   
@@ -149,13 +77,13 @@ int main(){
         grid[current_row][current_col] = 'C';
     }
     else if (*temp=='L')
-            input_record(grid, finish_row, finish_col, current_row, current_col);
+            input_record(grid, finish_row, finish_col, current_row, current_col,grid_size_row ,grid_size_col);
     delete temp;
     
     //to ask the play to move his/her direction until reaching the finishing point or to save the game progress
     while ((current_row != finish_row || current_col != finish_col) && (savegame == 0)){
         display(grid, grid_size_row, grid_size_col, current_row, current_col, finish_row, finish_col, distance_start_finish, steps_walked);
-        move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col);
+        move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col, finish_row, finish_col, savegame);
     }
 	
     if (savegame == 0){
