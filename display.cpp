@@ -86,6 +86,6 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
         }
     }
     fout.close();
-    cout << "game saved in " << name <<endl;
+    cout << "Game saved in " << name <<endl;
     savegame = 1;
 }
