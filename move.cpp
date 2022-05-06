@@ -137,6 +137,6 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
 	grid[current_row][current_col] = 'C';}
     	}
     else 
-        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col,savegame);    
+        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col, savegame);    
 }
 
