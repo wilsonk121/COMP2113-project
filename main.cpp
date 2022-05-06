@@ -92,7 +92,8 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
 
 void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, 
 	     int distance_start_finish, int steps_walked){   
-        for(int i=1;i<=grid_size_row;i++){
+	cout << endl;
+	for(int i=1;i<=grid_size_row;i++){
             for(int j=1;j<=grid_size_col;j++){
                 cout<<"-"<<"-"<<"-"<<"-"<<"-";
             }
