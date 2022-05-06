@@ -1,7 +1,84 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>  
+#include <cstdlib>
+#include <fstream>  
 #include "other.h"
+
+using namespace std;
+
+void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){	
+    grid  = new char *[grid_size_row + 1];
+    for (int i = 1; i <= grid_size_row ; i++){
+       grid[i] = new char[grid_size_col + 1];
+    } 
+}
+
+void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr,int &grid_size_row ,int &grid_size_col){
+    string name;
+    ifstream fin;
+    string line;
+
+    char c;
+    int x,y;
+    cout<<"Input the file name: ";
+    cin>>name;
+    fin.open(name);
+    if(fin.fail()){
+        cout<<"Error in file opening"<<endl;
+        exit(1);
+    }
+    fin>>grid_size_row>>grid_size_col>>xfin>>yfin>>xcurr>>ycurr;
+
+    load_map(grid, grid_size_row, grid_size_col, xcurr, ycurr);
+    while(fin>>c>>x>>y){
+    grid[x][y]=c;
+    }
+
+}
+
+void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
+    string name;
+    ofstream fout;
+    cout<<"Input the file name: ";
+    cin>>name;
+    fout.open(name);
+    if(fout.fail()){
+        cout<<"Error in file opening"<<endl;
+        exit(1);
+    }
+    fout<<grid_size_row<<endl;
+    fout<<grid_size_col<<endl;
+    fout<<finish_row<<endl;
+    fout<<finish_col<<endl;
+
+    for(int i=1;i<=grid_size_row;i++){
+        for(int j=1;j<=grid_size_col;j++){
+            if(grid[i][j]=='C'){
+                fout<<i<<endl;
+                fout<<j<<endl;
+
+            }
+        }
+    }
+    for(int i=1;i<=grid_size_row;i++){
+        for(int j=1;j<=grid_size_col;j++){
+            if(grid[i][j]=='U'||grid[i][j]=='D'||grid[i][j]=='L'||grid[i][j]=='R'||grid[i][j]=='C'){
+                fout<<grid[i][j]<<endl;
+                fout<<i<<endl;
+                fout<<j<<endl;
+            }
+
+        }
+    }
+
+    fout.close();
+    cout<<"game saved in "<<name<<endl;
+    savegame=1;
+
+}
+
+
+
 
 //to check if the inputted direction and steps are valid
 bool move_action_valid (char direction, int number_of_step, int current_row, int current_col, int grid_size_row, int grid_size_col){
@@ -58,7 +135,7 @@ void move_action_path(char ** &grid, char direction, int number_of_step, int &ne
 
 //to move the player's direction and update the map with walking record and current position
 //input: the direction that the player want to move toward and the number of steps want to take in that direction
-void move_action(char ** &grid, int &steps_walked, int &current_row, int &current_col, int grid_size_row, int grid_size_col){
+void move_action(char ** &grid, int &steps_walked, int &current_row, int &current_col, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
     
     char direction;
     int number_of_step;
@@ -89,5 +166,6 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
 	grid[current_row][current_col] = 'C';}
     	}
     else 
-        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col);    
+        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col,savegame);    
 }
+
