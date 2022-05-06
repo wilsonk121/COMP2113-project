@@ -113,29 +113,27 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
     
     //to get valid players' input of direction and number of step
     do {
-    cout << "\nWhich direction do you want to walk towards?" << endl;
-    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwards, 'R' for rightwards, 'S' for saving game"<< endl;
-    cin >> direction;
-    if (direction == 'S'){
-        break;
-    }
-    cout << "How many steps do you want to take? ";
-    cin >> number_of_step;
-    }
-    while (move_action_valid(direction,number_of_step, current_row, current_col, grid_size_row, grid_size_col) == false);
+        cout << "\nWhich direction do you want to walk towards?" << endl;
+        cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwards, 'R' for rightwards, 'S' for saving game"<< endl;
+        cin >> direction;
+        if (direction == 'S')
+            break;
+        cout << "How many steps do you want to take? ";
+        cin >> number_of_step;
+    } while (move_action_valid(direction,number_of_step, current_row, current_col, grid_size_row, grid_size_col) == false);
     
     if (direction!='S'){
     	//to update the walking path
     	int next_row = current_row, next_col = current_col;
     	move_action_path(grid, direction, number_of_step, next_row, next_col, current_row, current_col);
 	
-    //to update the total steps walked and the current position
-    if (current_row != next_row || current_col != next_col){
-	steps_walked += number_of_step;
-	current_row = next_row;
-	current_col = next_col;
-	grid[current_row][current_col] = 'C';}
-    	}
+    	//to update the total steps walked and the current position
+	if (current_row != next_row || current_col != next_col){
+	    steps_walked += number_of_step;
+	    current_row = next_row;
+	    current_col = next_col;
+	    grid[current_row][current_col] = 'C';}
+    }
     else 
         output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col, savegame);    
 }
