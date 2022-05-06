@@ -5,51 +5,6 @@
 #include "other.h"
 
 using namespace std;
- //to load the map from the inputted file, it take map information as input and output a array of map
-void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){	
-    grid  = new char *[grid_size_row + 1];
-    for (int i = 1; i <= grid_size_row ; i++){
-       grid[i] = new char[grid_size_col + 1];
-    } 
-}
- //it take information such as map size, player position and finish position to output a file. The file act as a game saving and allow player to load it
-void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
-    string name;
-    ofstream fout;
-    cout << "Input the file name: ";
-    cin >> name;
-    fout.open(name);
-    if(fout.fail()){
-        cout << "Error in file opening" << endl;
-        exit(1);
-    }
-    fout << grid_size_row<<endl;
-    fout << grid_size_col<<endl;
-    fout << finish_row<<endl;
-    fout << finish_col<<endl;
-
-    for(int i = 1; i <= grid_size_row; i++){
-        for(int j = 1; j <= grid_size_col; j++){
-            if(grid[i][j] == 'C'){
-                fout << i << endl;
-                fout << j << endl;
-
-            }
-        }
-    }
-    for (int i = 1; i <= grid_size_row; i++){
-        for (int j = 1; j <= grid_size_col; j++){
-            if (grid[i][j] == 'U'|| grid[i][j] == 'D'|| grid[i][j] == 'L'|| grid[i][j] == 'R'||grid[i][j] == 'C'){
-                fout << grid[i][j] << endl;
-                fout << i << endl;
-                fout << j << endl;
-            }
-        }
-    }
-    fout.close();
-    cout << "game saved in " << name <<endl;
-    savegame = 1;
-}
 
 //to check if the inputted direction and steps are valid
 bool move_action_valid (char direction, int number_of_step, int current_row, int current_col, int grid_size_row, int grid_size_col){
