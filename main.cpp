@@ -241,7 +241,7 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
     
     //to get valid players' input of direction and number of step
     do {
-    cout << "\nWhich direction you want to walk towards?" << endl;
+    cout << "\nWhich direction do you want to walk towards?" << endl;
     cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwards, 'R' for rightwards, 'S' for saving game"<< endl;
     cin >> direction;
     if (direction == 'S'){
