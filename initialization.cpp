@@ -52,3 +52,28 @@ void random_start_and_finish_points(int &start_row, int &start_col, int &finish_
     cout << "\nStarting position: Row " << start_row << " Column " << start_col << endl;
     cout << "Finishing position: Row " << finish_row  << " Column " << finish_col << endl;
 }
+
+void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, int &grid_size_row , int &grid_size_col){
+    string name;
+    ifstream fin;
+    string line;
+
+    char c;
+    int x, y;
+    cout<<"Input the file name: ";
+    cin>>name;
+    fin.open(name);
+    if(fin.fail()){
+        cout<<"Error in file opening"<<endl;
+        exit(1);
+    }
+    fin>>grid_size_row>>grid_size_col>>xfin>>yfin>>xcurr>>ycurr;
+
+    load_map(grid, grid_size_row, grid_size_col, xcurr, ycurr);
+    while(fin>>c>>x>>y){
+    grid[x][y]=c;
+    }
+
+}
+
+
