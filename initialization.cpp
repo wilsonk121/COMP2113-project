@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdlib>  
 #include <ctime>
+#include <fstream>
 #include "other.h"
 
 using namespace std;
@@ -75,5 +76,4 @@ void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, 
     }
 
 }
-
 
