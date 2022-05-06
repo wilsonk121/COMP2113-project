@@ -52,6 +52,16 @@ void random_start_and_finish_points(int &start_row, int &start_col, int &finish_
     distance_start_finish = abs(start_row - finish_row) + abs(start_col - finish_col);
     cout << "\nStarting position: Row " << start_row << " Column " << start_col << endl;
 }
+
+
+//to load the map from the inputted file, it take map information as input and output a array of map
+void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){	
+    grid  = new char *[grid_size_row + 1];
+    for (int i = 1; i <= grid_size_row ; i++){
+       grid[i] = new char[grid_size_col + 1];
+    } 
+}
+
 //to take a file as input and read the file to load the game saving
 void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, int &grid_size_row , int &grid_size_col){
     string name;
