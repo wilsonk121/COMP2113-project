@@ -37,7 +37,7 @@ void display(char ** grid, int grid_size_row, int grid_size_col, int current_row
                 }
             }
             
-            cout<<endl;
+            cout << endl;
             for(int j = 1; j <= grid_size_col; j++){
                 cout << "-" << "-" << "-" << "-" << "-";
             }
@@ -51,7 +51,7 @@ void display(char ** grid, int grid_size_row, int grid_size_col, int current_row
 }
 
  //to take information such as map size, player position and finish position to output a file
-//The file act as a game saving and allow player to load it
+//the ouputted file acts as a game saving and allow player to load it next time
 void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
     string name;
     ofstream fout;
@@ -62,10 +62,10 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
         cout << "Error in file opening" << endl;
         exit(1);
     }
-    fout << grid_size_row<<endl;
-    fout << grid_size_col<<endl;
-    fout << finish_row<<endl;
-    fout << finish_col<<endl;
+    fout << grid_size_row <<endl;
+    fout << grid_size_col <<endl;
+    fout << finish_row <<endl;
+    fout << finish_col <<endl;
 
     for(int i = 1; i <= grid_size_row; i++){
         for(int j = 1; j <= grid_size_col; j++){
@@ -86,6 +86,6 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
         }
     }
     fout.close();
-    cout << "Game saved in " << name <<endl;
+    cout << "Game saved in " << name << endl;
     savegame = 1;
 }
