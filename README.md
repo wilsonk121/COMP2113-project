@@ -4,7 +4,7 @@ Group members:
 Kwok Yuet Wai, Wilson 3035921899
 Shum Wing Yan, Selina 3035800514
 
-Topic: Maze Runner
+Topic: Maze Escape
 
 Description:
 “Find Your Way Out Mazes” is a single player maze game with one goal: to find a way to the exit point to escape from the Mysterious Maze. You can adjust the level of the challenge at the beginning of the game. Then, you will be placed at a random starting point and you can start figuring your way to get out using the hints given through random guesses. Let’s get started and good luck with your adventure!
