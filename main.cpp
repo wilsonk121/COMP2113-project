@@ -14,14 +14,11 @@ int start_row, start_col, finish_row, finish_col;
 int distance_start_finish, distance_current_finish, steps_walked = 0;
 bool savegame = 0;
 
-void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
-    
-	
+void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){	
     grid  = new char *[grid_size_row + 1];
     for (int i = 1; i <= grid_size_row ; i++){
        grid[i] = new char[grid_size_col + 1];
-    }
-    
+    } 
 }
 
 void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr){
@@ -31,7 +28,7 @@ void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr){
 
     char c;
     int x,y;
-    cout<<"input the file name:";
+    cout<<"Input the file name: ";
     cin>>name;
     fin.open(name);
     if(fin.fail()){
@@ -50,7 +47,7 @@ void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr){
 void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col){
     string name;
     ofstream fout;
-    cout<<"input the file name:";
+    cout<<"Input the file name: ";
     cin>>name;
     fout.open(name);
     if(fout.fail()){
