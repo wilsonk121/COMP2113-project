@@ -13,29 +13,6 @@ void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & curre
     } 
 }
 
-void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr,int &grid_size_row ,int &grid_size_col){
-    string name;
-    ifstream fin;
-    string line;
-
-    char c;
-    int x,y;
-    cout<<"Input the file name: ";
-    cin>>name;
-    fin.open(name);
-    if(fin.fail()){
-        cout<<"Error in file opening"<<endl;
-        exit(1);
-    }
-    fin>>grid_size_row>>grid_size_col>>xfin>>yfin>>xcurr>>ycurr;
-
-    load_map(grid, grid_size_row, grid_size_col, xcurr, ycurr);
-    while(fin>>c>>x>>y){
-    grid[x][y]=c;
-    }
-
-}
-
 void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
     string name;
     ofstream fout;
