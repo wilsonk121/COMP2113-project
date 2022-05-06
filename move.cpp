@@ -5,14 +5,14 @@
 #include "other.h"
 
 using namespace std;
-
+ //to load the map from the inputted file
 void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){	
     grid  = new char *[grid_size_row + 1];
     for (int i = 1; i <= grid_size_row ; i++){
        grid[i] = new char[grid_size_col + 1];
     } 
 }
-
+ //to output a file which contain map data,user information etc. The file act as a game saving and allow player to load it
 void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
     string name;
     ofstream fout;
