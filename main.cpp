@@ -11,6 +11,7 @@ using namespace std;
 char ** grid;
 int grid_size_row, grid_size_col, current_row, current_col;
 int start_row, start_col, finish_row, finish_col;
+int distance_start_finish, distance_current_finish, steps_walked = 0;
 bool savegame = 0;
 
 void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col){
@@ -89,8 +90,8 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
 
 }
 
-void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col){   
-	
+void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, 
+	     int distance_start_finish, int steps_walked){   
         for(int i=1;i<=grid_size_row;i++){
             for(int j=1;j<=grid_size_col;j++){
                 cout<<"-"<<"-"<<"-"<<"-"<<"-";
@@ -126,6 +127,11 @@ void display(char ** grid, int grid_size_row, int grid_size_col, int current_row
             }
             cout<<endl;
         }
+    //to provide statistics and hint to the player 
+    distance_current_finish = abs(current_row - finish_row) + abs(current_col - finish_col);
+    cout << "Shortest steps from starting point to exit point: " << distance_start_finish << endl;
+    cout << "Shortest steps from current point to exit point: " << distance_current_finish << endl;
+    cout << "Total steps walked from the starting point: " << steps_walked << endl;
 }
 
 
@@ -145,7 +151,8 @@ void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & c
 }
 
 //to generate the random starting point and finishing point
-void random_start_and_finish_points(int &start_row, int &start_col, int &finish_row, int &finish_col, int grid_size_row, int grid_size_col){
+void random_start_and_finish_points(int &start_row, int &start_col, int &finish_row, int &finish_col, int grid_size_row, int grid_size_col, int &distance_start_finish){
+    
     srand(time(NULL));	// initialize the seed for rand()
 	
     start_row = rand() % grid_size_row + 1;
@@ -158,6 +165,7 @@ void random_start_and_finish_points(int &start_row, int &start_col, int &finish_
         finish_row = rand() % grid_size_row + 1;
     	finish_col = rand() % grid_size_col + 1;
     }
+    distance_start_finish = abs(start_row - finish_row) + abs(start_col - finish_col);
     cout << "\nStarting position: Row " << start_row << " Column " << start_col << endl;
     cout << "Finishing position: Row " << finish_row  << " Column " << finish_col << endl;
 }
@@ -261,7 +269,7 @@ int main(){
         //to generate map with input size
         generate_map(grid, grid_size_row, grid_size_col, current_row, current_col);
         //to generate starting and finishing positions randomly
-        random_start_and_finish_points(start_row, start_col, finish_row, finish_col, grid_size_row, grid_size_col);
+        random_start_and_finish_points(start_row, start_col, finish_row, finish_col, grid_size_row, grid_size_col, distance_start_finish);
         //to update the starting point as the current position	
         current_row = start_row;
         current_col = start_col;
@@ -279,12 +287,7 @@ int main(){
     
     //to ask the play to move his/her direction until reaching the finishing point
     while ((current_row != finish_row || current_col != finish_col) && (savegame == 0)){
-        distance_start_finish = abs(start_row - finish_row) + abs(start_col - finish_col);
-        distance_current_finish = abs(current_row - finish_row) + abs(current_col - finish_col);
-        cout << "Shortest steps from starting point to exit point: " << distance_start_finish << endl;
-        cout << "Shortest steps from current point to exit point: " << distance_current_finish << endl;
-        cout << "Total steps walked from the starting point: " << steps_walked << endl;
-        display(grid, grid_size_row, grid_size_col, current_row, current_col);
+        display(grid, grid_size_row, grid_size_col, current_row, current_col, finish_row, finish_col, distance_start_finish, steps_walked);
         move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col);
     }
 	
