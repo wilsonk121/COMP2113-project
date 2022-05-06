@@ -7,24 +7,23 @@ Shum Wing Yan, Selina 303580014
 Topic: Maze Runner
 
 Description:
-“Find Your Way Out Mazes” is a single player maze game with one goal: to find a way to the exit point to escape from the Mysterious Maze. You can adjust the level of the challenge at the beginning of the game. Then, you will be placed at a random start point and you can start figuring your way to get out. There’ll be some dangerous places with some monster. If you unfortunately stepped on those places, you’ll have to battle with the monster to pass through it! Otherwise you’ll have to waste more time and face more monsters in find another way out. Let’s get started! Good luck with your adventure!
+“Find Your Way Out Mazes” is a single player maze game with one goal: to find a way to the exit point to escape from the Mysterious Maze. You can adjust the level of the challenge at the beginning of the game. Then, you will be placed at a random starting point and you can start figuring your way to get out using the hints given through random guesses. Let’s get started and good luck with your adventure!
 
-Game Rules:
-1. Enter a grid size of minimum of 3 for both the row and column sizes
-2. You have to walk for a minimum of 1 steps each time
-3. You are not allowed to walk outside the boundaries 
-4. You cannot restart a game until you get to the destination. So, try to complete it!
-
-Game Instructions ("Quick Start"):
-1.	Enter the grid size both the row size and column that you want to play in (Increase the grid size if you want to challenge yourself!)
-2.	A map with your current location is revealed and the minimum required number of steps to the destination is shown
-3.	Move your current position by entering 'U' for upwards, "D" for downwards, "L" for leftwards and "R" for rightwards
-4. Enter the number of steps you wanted to take in the inputed direction
-5.	Your new current direction along with you walking path is shown
-6.	If you land on a dangerous place, you will have to win a mini-game in order to pass through it. Follow the instruction on the screen. You'll go one step backward if you fail to win.
-7.	Try to get to the destination! (You will see “Congratulations! You have successfully escaped from the Mysterious Maze!!!”)
+Game Instrucions:
+1. Start a new game: Input "S", and input a grid size of minimum of 2 for both the row and column sizes. Increase the grid size if you want to challenge yourself!
+   Or, Load a saved game: Input "L", and input the file name of the saved game.
+2. A map with your current location is revealed and the minimum required number of steps to the destination is shown.
+3. Move your current position by entering 'U' for upwards, "D" for downwards, "L" for leftwards and "R" for rightwards. You are not allowed to walk outside the boundaries.
+4. Enter the number of steps you wanted to take in the inputed direction. You have to walk for a minimum of 1 steps each time.
+5. Your new current direction along with you walking path is shown.
+6. Try to get to the destination! You will see “Congratulations! You have successfully escaped from the Mysterious Maze!!!” at the end of the game.
+7. You cannot restart a game until you get to the destination, but you can save the game and continue to play next time by entering "S" towards the question "Which direction do you want to walk towards?".
 
 
+Compilation and Execution Instructions:
+1. All the files must be in the same directory
+2. Input "g++ -pedantic-errors -std=c++11 main.cpp initialization.cpp move.cpp display.cpp -o main" 
+3. Input "./main"
 
 Features : 
 1. The first feature is Monster encountering. Players have to battle with the monster if they step into a particular grid. Those grids are randomly assigned.(Generation of random game sets or events)
