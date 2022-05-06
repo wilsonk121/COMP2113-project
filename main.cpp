@@ -62,7 +62,7 @@ void display(char ** grid, int grid_size_row, int grid_size_col, int current_row
 
 int main(){
     
-    char *temp=new char;
+    char *temp = new char;
     cout << "Welcome you to the Mysterious Maze!" << endl;
     cout << "Do you want to start a new game (S) or load from a saved game (L): ";
     cin >> *temp;
@@ -76,8 +76,8 @@ int main(){
         current_col = start_col;
         grid[current_row][current_col] = 'C';
     }
-    else if (*temp=='L')
-            input_record(grid, finish_row, finish_col, current_row, current_col,grid_size_row ,grid_size_col);
+    else if (*temp =='L')
+        input_record(grid, finish_row, finish_col, current_row, current_col, grid_size_row, grid_size_col);
     delete temp;
     
     //to ask the play to move his/her direction until reaching the finishing point or to save the game progress
