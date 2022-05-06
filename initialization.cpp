@@ -51,7 +51,6 @@ void random_start_and_finish_points(int &start_row, int &start_col, int &finish_
     }
     distance_start_finish = abs(start_row - finish_row) + abs(start_col - finish_col);
     cout << "\nStarting position: Row " << start_row << " Column " << start_col << endl;
-    cout << "Finishing position: Row " << finish_row  << " Column " << finish_col << endl;
 }
 //to take a file as input and read the file to load the game saving
 void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, int &grid_size_row , int &grid_size_col){
