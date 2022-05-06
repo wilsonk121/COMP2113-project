@@ -28,7 +28,7 @@ Compilation and Execution Instructions:
 Features : 
 1. Player will be spawned in random position, also the exit location will be ramdomly assigned. (Generation of random game sets or events)
 2. There will be various arrays used to store the game status. One of the significant statuses is the position of the player. We will use an int array to store it,  '1' represents the player, and '0' represents an empty grid. The status will be changed once the player moves.(Data structures for storing game status)
-3. When memory is no longer required in the program, we will return it to the system . This can prevent the shortage of memory (Dynamic memory management)
+3. Dynamic memory management is appiled in the array that used to store the map .When memory is no longer required in the program, we will return it to the system . This can prevent the shortage of memory (Dynamic memory management)
 4. User can save game and load game. System will output a file of game status and you can load it by input the file name(e.g. for loading/saving game status))
 5. The program will be divided into several files to facilitate game development. such as initialization.cpp ,display.cpp and move.cpp , and it will be separated from the main function to increase readability and reusability.(Program codes in multiple files)
 6. The program use indentation properly especially in multidimensional arrays. we use readable name to be assigned to variable(Proper indentation and naming styles)
