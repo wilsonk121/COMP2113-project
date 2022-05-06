@@ -7,40 +7,40 @@ using namespace std;
 void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, 
 	     int distance_start_finish, int steps_walked){   
 	cout << endl;
-	for(int i=1;i<=grid_size_row;i++){
-            for(int j=1;j<=grid_size_col;j++){
-                cout<<"-"<<"-"<<"-"<<"-"<<"-";
+	for(int i = 1; i <= grid_size_row; i++){
+            for(int j = 1;j <= grid_size_col; j++){
+                cout << "-" << "-" << "-" << "-" << "-";
             }
-            cout<<endl;
-            for(int j=1;j<=grid_size_col;j++){
+            cout << endl;
+            for(int j = 1; j <= grid_size_col; j++){
                     switch(grid[i][j]){
                             case 'L':
-                            cout<<"|"<<" < "<<"|";
+                            cout << "|" << " < " << "|";
                             break;
                             case 'R':
-                            cout<<"|"<<" > "<<"|";
+                            cout << "|" << " > " << "|";
                             break;
                             case 'U':
-                            cout<<"|"<<" ^ "<<"|";
+                            cout << "|" << " ^ " << "|";
                             break;
                             case 'D':
-                            cout<<"|"<<" ! "<<"|";
+                            cout << "|" << " ! " << "|";
                             break;
                             case 'C':
-                            cout<<"|"<<" x "<<"|";
+                            cout << "|" << " x " << "|";
                             break;
                             default:
-                            cout<<"|"<<"   "<<"|";
+                            cout << "|" << "   " << "|";
                             break;
                 }
             }
 
             
             cout<<endl;
-            for(int j=1;j<=grid_size_col;j++){
-                cout<<"-"<<"-"<<"-"<<"-"<<"-";
+            for(int j = 1; j <= grid_size_col; j++){
+                cout << "-" << "-" << "-" << "-" << "-";
             }
-            cout<<endl;
+            cout << endl;
         }
     //to provide statistics and hint to the player 
     distance_current_finish = abs(current_row - finish_row) + abs(current_col - finish_col);
