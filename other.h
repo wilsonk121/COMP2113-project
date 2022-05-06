@@ -4,7 +4,7 @@
 //functions in initialization.cpp
 void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col);
 void random_start_and_finish_points(int &start_row, int &start_col, int &finish_row, int &finish_col, int grid_size_row, int grid_size_col, int &distance_start_finish);
-void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr,int &grid_size_row ,int &grid_size_col);
+void input_record(char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, int &grid_size_row , int &grid_size_col);
 
 //functions in move.cpp
 bool move_action_valid (char direction, int number_of_step, int current_row, int current_col, int grid_size_row, int grid_size_col);
