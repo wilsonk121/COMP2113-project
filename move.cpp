@@ -20,7 +20,7 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
     cin >> name;
     fout.open(name);
     if(fout.fail()){
-        cout<<"Error in file opening"<<endl;
+        cout << "Error in file opening" << endl;
         exit(1);
     }
     fout << grid_size_row<<endl;
@@ -37,25 +37,19 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
             }
         }
     }
-    for(int i = 1; i <= grid_size_row; i++){
-        for(int j = 1; j <= grid_size_col; j++){
-            if(grid[i][j] == 'U'|| grid[i][j] == 'D'|| grid[i][j] == 'L'|| grid[i][j] == 'R'||grid[i][j] == 'C'){
+    for (int i = 1; i <= grid_size_row; i++){
+        for (int j = 1; j <= grid_size_col; j++){
+            if (grid[i][j] == 'U'|| grid[i][j] == 'D'|| grid[i][j] == 'L'|| grid[i][j] == 'R'||grid[i][j] == 'C'){
                 fout << grid[i][j] << endl;
                 fout << i << endl;
                 fout << j << endl;
             }
-
         }
     }
-
     fout.close();
     cout << "game saved in " << name <<endl;
     savegame = 1;
-
 }
-
-
-
 
 //to check if the inputted direction and steps are valid
 bool move_action_valid (char direction, int number_of_step, int current_row, int current_col, int grid_size_row, int grid_size_col){
