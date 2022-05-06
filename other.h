@@ -12,6 +12,8 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
 void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & current_row, int &current_col);
 void input_record(char ** &grid,int &xfin,int &yfin,int &xcurr,int &ycurr,int &grid_size_row ,int &grid_size_col);
 void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame);
+
 //functions in display.cpp
+void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, int distance_start_finish, int steps_walked)
 
 #endif
