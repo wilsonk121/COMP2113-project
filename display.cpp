@@ -72,7 +72,6 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
             if(grid[i][j] == 'C'){
                 fout << i << endl;
                 fout << j << endl;
-
             }
         }
     }
