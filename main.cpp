@@ -138,9 +138,20 @@ void generate_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & c
     
     cout << "Input map size row: ";
     cin >> grid_size_row;
+    while (grid_size_row < 2) {
+        cout << "Please input a number greater than 1" << endl;
+        cout << "Input map size row: ";
+        cin >> grid_size_row;
+    }
+
     cout << "Input map column: ";
     cin >> grid_size_col;
-	
+    while (grid_size_row < 2) {
+        cout << "Please input a number greater than 1" << endl;
+        cout << "Input map size column: ";
+        cin >> grid_size_row;
+    }
+
     grid  = new char *[grid_size_row + 1];
     for (int i = 1; i <= grid_size_row ; i++){
        grid[i] = new char[grid_size_col + 1];
@@ -231,7 +242,7 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
     //to get valid players' input of direction and number of step
     do {
     cout << "\nWhich direction you want to walk towards?" << endl;
-    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwarda, 'R' for rightwards, 'S' for saving game"<< endl;
+    cout << "Enter 'U' for upwards, 'D' for downwards, 'L' for leftwards, 'R' for rightwards, 'S' for saving game"<< endl;
     cin >> direction;
     if (direction == 'S'){
         break;
@@ -261,7 +272,7 @@ int main(){
     
     char *temp=new char;
     cout << "Welcome you to the Mysterious Maze!" << endl;
-    cout << "Do you want to start a new game or load from a saved game(S/L): " << endl;
+    cout << "Do you want to start a new game (S) or load from a saved game (L): ";
     cin >> *temp;
     if (*temp=='S'){
         //to generate map with input size
