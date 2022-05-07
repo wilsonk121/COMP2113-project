@@ -53,7 +53,7 @@ void display(char ** grid, int grid_size_row, int grid_size_col, int current_row
 
  //to take information such as map size, player position and finish position to output a file
 //the ouputted file acts as a game saving and allow player to load it next time
-void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
+void output_record(char ** grid, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame, int distance_start_finish, int steps_walked){
     string name;
     ofstream fout;
     cout << "Input the file name: ";
@@ -76,6 +76,9 @@ void output_record(char ** grid, int grid_size_row, int grid_size_col, int finis
             }
         }
     }
+    fout << distance_start_finish <<endl;
+    fout << steps_walked <<endl;
+
     for (int i = 1; i <= grid_size_row; i++){
         for (int j = 1; j <= grid_size_col; j++){
             if (grid[i][j] == 'U'|| grid[i][j] == 'D'|| grid[i][j] == 'L'|| grid[i][j] == 'R'||grid[i][j] == 'C'){
