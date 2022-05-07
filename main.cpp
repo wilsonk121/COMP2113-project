@@ -43,7 +43,7 @@ int main(){
 	
     if (savegame == 0){
     //to indicate the finish of the game
-    cout << "Congratulation! You've successfully escaped from the Mysterious Maze!!!" << endl;
+    cout << "\nCongratulation! You've successfully escaped from the Mysterious Maze!!!" << endl;
 
     //to provide game record
     cout << "\nGame statistics: " << endl;
