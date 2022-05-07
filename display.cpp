@@ -26,7 +26,7 @@ void display(char ** grid, int grid_size_row, int grid_size_col, int current_row
                     cout << "|" << " ^ " << "|";
                     break;
                     case 'D':
-                    cout << "|" << " ! " << "|";
+                    cout << "|" << " v " << "|";
                     break;
                     case 'C':
                     cout << "|" << " x " << "|";
