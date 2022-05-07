@@ -32,18 +32,18 @@ int main(){
         grid[current_row][current_col] = 'C';
     }
     else if (*temp =='L')
-        input_record(grid, finish_row, finish_col, current_row, current_col, grid_size_row, grid_size_col);
+        input_record(grid, finish_row, finish_col, current_row, current_col, grid_size_row, grid_size_col, distance_start_finish, steps_walked);
     delete temp;
     
     //to ask the play to move his/her direction until reaching the finishing point or to save the game progress
     while ((current_row != finish_row || current_col != finish_col) && (savegame == 0)){
         display(grid, grid_size_row, grid_size_col, current_row, current_col, finish_row, finish_col, distance_start_finish, steps_walked);
-        move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col, finish_row, finish_col, savegame);
+        move_action(grid, steps_walked, current_row, current_col, grid_size_row, grid_size_col, finish_row, finish_col, savegame, distance_start_finish);
     }
 	
     if (savegame == 0){
     //to indicate the finish of the game
-    cout << "\nCongratulation! You've successfully escaped from the Mysterious Maze!!!" << endl;
+    cout << "Congratulation! You've successfully escaped from the Mysterious Maze!!!" << endl;
 
     //to provide game record
     cout << "\nGame statistics: " << endl;
