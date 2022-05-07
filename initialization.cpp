@@ -74,7 +74,7 @@ void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, 
     cin >> name;
     fin.open(name);
     if(fin.fail()){
-        cout << "Error in file opening"<<endl;
+        cout << "Error in file opening" << endl;
         exit(1);
     }
     fin >> grid_size_row >> grid_size_col >> xfin >> yfin >> xcurr >> ycurr;
