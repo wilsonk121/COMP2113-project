@@ -63,7 +63,7 @@ void load_map(char ** &grid, int &grid_size_row, int &grid_size_col, int & curre
 }
 
 //to take a file as input and read the file to load the game saving
-void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, int &grid_size_row , int &grid_size_col){
+void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, int &grid_size_row , int &grid_size_col, int &distance_start_finish, int &steps_walked){
     string name;
     ifstream fin;
     string line;
@@ -77,7 +77,7 @@ void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, 
         cout << "Error in file opening" << endl;
         exit(1);
     }
-    fin >> grid_size_row >> grid_size_col >> xfin >> yfin >> xcurr >> ycurr;
+    fin >> grid_size_row >> grid_size_col >> xfin >> yfin >> xcurr >> ycurr >> distance_start_finish >> steps_walked;
 
     load_map(grid, grid_size_row, grid_size_col, xcurr, ycurr);
     while(fin >> c >> x >> y){
@@ -85,4 +85,3 @@ void input_record( char ** &grid, int &xfin, int &yfin, int &xcurr, int &ycurr, 
     }
 
 }
-
