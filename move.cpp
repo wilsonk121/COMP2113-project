@@ -61,7 +61,7 @@ void move_action_path(char ** &grid, char direction, int number_of_step, int &ne
 
 //to move the player's direction and update the map with walking record and current position
 //input: the direction that the player want to move toward and the number of steps want to take in that direction
-void move_action(char ** &grid, int &steps_walked, int &current_row, int &current_col, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame){
+void move_action(char ** &grid, int &steps_walked, int &current_row, int &current_col, int grid_size_row, int grid_size_col, int finish_row, int finish_col, bool &savegame, int distance_start_finish){
     
     char direction;
     int number_of_step;
@@ -90,6 +90,5 @@ void move_action(char ** &grid, int &steps_walked, int &current_row, int &curren
 	    grid[current_row][current_col] = 'C';}
     }
     else 
-        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col, savegame);    
+        output_record(grid, grid_size_row, grid_size_col, finish_row, finish_col, savegame, distance_start_finish, steps_walked);    
 }
-
