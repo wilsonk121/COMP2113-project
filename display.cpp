@@ -1,9 +1,10 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <fstream>
 #include "other.h"
 
-using namespace std
+using namespace std;
 	
 //to display the essential information for the game such as map, user location, distance from the end point
 void display(char ** grid, int grid_size_row, int grid_size_col, int current_row, int current_col, int finish_row, int finish_col, int distance_start_finish, int steps_walked){   
